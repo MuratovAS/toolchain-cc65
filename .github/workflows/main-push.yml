@@ -26,10 +26,13 @@ jobs:
             -H 'Content-Type: application/json' \
             "https://api.github.com/repos/${GITHUB_REPOSITORY}/releases"
           RELEASE_ID=$(curl -svL https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/tags/$RELEASE_TAG | jq .id)
+          ls -lah /rep/cc65
+          ls -lah /rep/
+          ls -lah /
           cd /rep/cc65
           RELEASE_FILE="cc65.zip"
           curl -sL -XPOST -T ${RELEASE_FILE}* \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Content-Type:application/octet-stream" \
-            "https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID/assets?&name=riscv32i-$RELEASE_TAG.tar.gz"
+            "https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID/assets?&name=cc65-$RELEASE_TAG.zip"
         shell: bash
