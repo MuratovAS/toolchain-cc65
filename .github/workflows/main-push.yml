@@ -18,7 +18,7 @@ jobs:
              sudo apt install -y make gcc git zip
              git clone https://github.com/cc65/cc65
              cd cc65
-             make all zip
+             make all
              cd ..
              tar -cvf cc65.tar.gz cc65/asminc cc65/bin cc65/cfg cc65/include cc65/lib cc65/samples cc65/target
       - name: publish
