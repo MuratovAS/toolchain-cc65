@@ -35,5 +35,5 @@ jobs:
           curl -sL -XPOST -T ${RELEASE_FILE}* \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Content-Type:application/octet-stream" \
-            "https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID/assets?&name=cc65-$RELEASE_TAG.zip"
+            "https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID/assets?&name=cc65-$RELEASE_TAG.tar.gz"
         shell: bash
