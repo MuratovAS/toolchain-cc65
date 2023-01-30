@@ -19,6 +19,8 @@ jobs:
              git clone https://github.com/cc65/cc65
              cd cc65
              make all zip
+             cd ..
+             tar -cvf cc65.tar.gz cc65/asminc cc65/bin cc65/cfg cc65/include cc65/lib cc65/samples cc65/target
       - name: publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -29,8 +31,7 @@ jobs:
             -H 'Content-Type: application/json' \
             "https://api.github.com/repos/${GITHUB_REPOSITORY}/releases"
           RELEASE_ID=$(curl -svL https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/tags/$RELEASE_TAG | jq .id)
-          cd cc65
-          RELEASE_FILE="cc65.zip"
+          RELEASE_FILE="cc65.tar.gz"
           curl -sL -XPOST -T ${RELEASE_FILE}* \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Content-Type:application/octet-stream" \
